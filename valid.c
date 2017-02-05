@@ -6,7 +6,7 @@
 /*   By: alcornea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 18:57:36 by alcornea          #+#    #+#             */
-/*   Updated: 2017/01/27 18:57:52 by alcornea         ###   ########.fr       */
+/*   Updated: 2017/02/04 20:35:34 by aabdrash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,7 +301,6 @@ char	**str_split(char *str, char c)
 			counter++;
 		i++;
 	}
-	printf("counter %d", counter);
 	answer = (char **)malloc(sizeof(char *) * counter + 1);
 	i = 0;
 	j = 0;
@@ -368,11 +367,10 @@ int main(int argc, char **argv)
         {
             //printf("comparing with new line %d\n", strcmp(str[i], "\n"));
             //printf("%s\n", "start");
-            printf("%s\n", str[i]);
+            //printf("%s\n", str[i]);
             //printf("%s\n", "end");
             i++;
         }
-        printf("ASDFGFSA\n");
         solution(str);
     }
 	return(0);

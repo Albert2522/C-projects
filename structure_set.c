@@ -41,26 +41,45 @@ int	count_max_size(int number_shapes)
 	return(i);
 }
 
+void	check_structure(t_shape **arr_struct, int number_shapes)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < number_shapes)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			j++;
+		}
+		i++;
+	}
+}
+
 t_shape	*get_shape(char **str, int pos)
 {
-	int j;
-	int i = 0;
-	int stop_point = pos + 4;
-	int k = 0;
+	int		j;
+	int		i;
+	int		stop_point;
+	int		k;
 	t_shape	*shape;
 
-    printf("SHAPE");
+	i = pos;
+	stop_point = pos + 4;
+	k = 0;
 	shape = (t_shape *)malloc(sizeof(t_shape));
-	while (str[pos] && pos < stop_point)
+	while (str[i] && i < stop_point)
 	{
-        printf("%s\n", str[i]);
 		j = 0;
 		while(j < 4)
 		{
 			if (str[i][j] == '#')
 			{
-				shape->x[k] = i;
+				shape->x[k] = i - pos;
 				shape->y[k] = j;
+				k++;
 			}
 			j++;
 		}
@@ -75,16 +94,18 @@ t_shape	**set_struct(int number_shapes, char **str)
 {
 	t_shape **array_shapes;
 	int		i;
-	int pos = 0;
-	char index = 'A';
+	int 	pos;
+	char 	index;
 
-	array_shapes = (t_shape **)malloc(sizeof(t_shape *) * number_shapes);
+	index = 'A';
+	pos = 0;
+	array_shapes = (t_shape **)malloc(sizeof(t_shape *) * number_shapes + 1);
 	i = 0;
 	while (i < number_shapes)
 	{
 		array_shapes[i] = get_shape(str, pos);
 		array_shapes[i]->chr = index++;
-		while (str[pos] && strcmp(str[pos],"\n") != 0)
+		while (i < number_shapes && str[pos] && strcmp(str[pos],"\n") != 0)
 			pos++;
 		pos++;
 		i++;	
